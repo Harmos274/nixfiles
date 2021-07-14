@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  # Nix overlays
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -8,6 +15,22 @@
   # paths it should manage.
   home.username = "nuggets";
   home.homeDirectory = "/home/nuggets";
+
+  # Basic Git configuration
+
+  programs.git = {
+    enable = true;
+    userName = "Lilian VERLHAC";
+    userEmail = "lilian.verlhac@outlook.com";
+  };
+
+
+  home.packages = with pkgs; [
+    bat
+    lsd
+    ncdu
+    neovim-nightly
+  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
