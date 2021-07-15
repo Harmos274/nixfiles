@@ -1,3 +1,3 @@
-[submodule "nvim"]
-	path = nvim
+[submodule "shell/nvim"]
+	path = shell/nvim
 	url = git@github.com:Harmos274/nvim.git

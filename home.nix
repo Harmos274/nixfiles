@@ -8,8 +8,22 @@
     }))
   ];
 
+  imports = [
+    ./shell
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Environment variables for Nuggets
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    GIT_EDITOR = "nvim";
+    VISUAL = "nvim";
+    DIFFPROG = "nvim -d";
+    MANPAGER = "nvim +Man!";
+    MANWIDTH = 999;
+  };
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -26,10 +40,8 @@
 
 
   home.packages = with pkgs; [
-    bat
-    lsd
+    rustup
     ncdu
-    neovim-nightly
   ];
 
   # This value determines the Home Manager release that your
