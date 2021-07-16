@@ -1,4 +1,4 @@
-# Nix OS / Home ManagerNvim
+# Nix OS / Home Manager
 
 ## Install
 Nix and home-manager are required.
