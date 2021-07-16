@@ -17,6 +17,7 @@
       tree-sitter
 
       # LSP
+      rnix-lsp
       nodePackages.typescript nodePackages.typescript-language-server
       rust-analyzer
     ];

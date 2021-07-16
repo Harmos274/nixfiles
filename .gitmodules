@@ -1,3 +1,6 @@
 [submodule "shell/nvim"]
 	path = shell/nvim
 	url = git@github.com:Harmos274/nvim.git
+[submodule "shell/kitty"]
+	path = shell/kitty
+	url = git@github.com:Harmos274/kitty-config.git

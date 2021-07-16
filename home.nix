@@ -3,9 +3,13 @@
 {
   # Nix overlays
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
+    (
+      import (
+        builtins.fetchTarball {
+          url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+        }
+      )
+    )
   ];
 
   imports = [
@@ -39,9 +43,17 @@
   };
 
 
+  # enable font configuration
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
-    rustup
+    # Fonts
+    (pkgs.nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
+
+    ag
+    fzf
     ncdu
+    rustup
   ];
 
   # This value determines the Home Manager release that your
