@@ -3,6 +3,7 @@
   imports = [
     ./fish.nix
     ./neovim.nix
+    ./kitty.nix
   ];
 
   programs = {
