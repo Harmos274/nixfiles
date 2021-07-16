@@ -1,8 +1,11 @@
 # Nix OS / Home Manager
 
 DE: Gnome 40
+
 Terminal Emulator: Kitty
+
 Shell: Fish
+
 Editor: Nvim (nightly)
 
 You may have noted that i barely use the power of nix configs. There is two major reasons behind that, firstly 
