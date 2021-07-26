@@ -13,7 +13,9 @@
   ];
 
   imports = [
+    ./python
     ./shell
+    ./latex
   ];
 
   # Let Home Manager install and manage itself.
@@ -48,12 +50,18 @@
 
   home.packages = with pkgs; [
     # Fonts
-    (pkgs.nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
+    (nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
 
     ag
     fzf
+    jq
     ncdu
+    nodejs
+    pyright
+    ripgrep
     rustup
+    vifm
+    yarn
   ];
 
   # This value determines the Home Manager release that your

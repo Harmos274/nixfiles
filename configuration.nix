@@ -86,6 +86,7 @@
   environment.systemPackages = with pkgs; [
     curl
     discord
+    exfat-utils
     firefox
     fish
     gcc
@@ -95,7 +96,9 @@
     htop
     kitty
     neovim
+    ntfs3g
     obsidian
+    python3
     spotify
     teamspeak_client
     tree
@@ -104,6 +107,7 @@
     vivaldi-widevine
     wget
   ];
+
 
   # Set Neovim as default editor
   environment.variables.EDITOR = "nvim";

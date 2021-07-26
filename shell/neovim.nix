@@ -22,6 +22,7 @@
       rnix-lsp
       rust-analyzer
       sumneko-lua-language-server
+      texlab
     ];
   };
 }
