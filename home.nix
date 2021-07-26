@@ -60,6 +60,7 @@
     pyright
     ripgrep
     rustup
+    stack
     vifm
     yarn
   ];
