@@ -56,7 +56,7 @@
     fzf
     jq
     ncdu
-    nodejs
+    nodejs_latest
     pyright
     ripgrep
     rustup

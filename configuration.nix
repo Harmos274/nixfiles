@@ -86,6 +86,7 @@
   environment.systemPackages = with pkgs; [
     curl
     discord
+    docker-compose
     exfat-utils
     firefox
     fish
@@ -100,6 +101,7 @@
     obsidian
     python3
     spotify
+    teams
     teamspeak_client
     tree
     vivaldi
