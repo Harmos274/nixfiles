@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # ./dewm/sway.nix # Include this for a lighter DE
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -19,7 +20,7 @@
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "Europe/Dublin";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -51,6 +52,7 @@
   # Exclude base gnome packages
   environment.gnome.excludePackages = with pkgs.gnome; [
     epiphany
+    geary
   ];
 
   # Configure keymap in X11
@@ -103,6 +105,7 @@
     spotify
     teams
     teamspeak_client
+    thunderbird
     tree
     vivaldi
     vivaldi-ffmpeg-codecs
