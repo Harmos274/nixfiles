@@ -53,8 +53,11 @@
     (nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
 
     ag
+    azure-cli
+    bat
     fzf
     jq
+    lsd
     ncdu
     nodejs_latest
     pyright

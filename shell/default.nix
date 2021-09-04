@@ -6,9 +6,6 @@
     ./kitty.nix
   ];
 
-  programs = {
-    lsd.enable = true;
 
-    bat.enable = true;
-  };
+  programs = {};
 }

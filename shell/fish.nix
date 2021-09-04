@@ -15,6 +15,7 @@
       chm = "cd $HOME/.config/nixpkgs";
       gst = "git status";
       "..." = "cd ../../";
+      md = "mkdir";
     };
   };
 }
