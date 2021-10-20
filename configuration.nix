@@ -10,6 +10,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ./dewm/sway.nix # Include this for a lighter DE
+      # ./addons/gaming.nix # Lutris, Steam etc... for G4MING
+      ./addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -72,6 +74,9 @@
   # Enable fish
   programs.fish.enable = true;
 
+  # Enable dconf editor
+  programs.dconf.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nuggets = {
     isNormalUser = true;
@@ -97,7 +102,7 @@
     gnome.gnome-tweaks
     gnumake
     htop
-    kitty
+    #kitty
     neovim
     ntfs3g
     obsidian
@@ -118,7 +123,7 @@
   environment.variables.EDITOR = "nvim";
 
   # Add docker
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -146,5 +151,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }

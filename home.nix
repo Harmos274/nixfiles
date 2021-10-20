@@ -48,23 +48,39 @@
   # enable font configuration
   fonts.fontconfig.enable = true;
 
+  # allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     # Fonts
     (nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
+    overpass
 
     ag
+    appimage-run
     azure-cli
     bat
+    deluge
     fzf
+    inkscape
     jq
     lsd
+    minecraft
     ncdu
+    newsflash
     nodejs_latest
     pyright
     ripgrep
     rustup
     stack
+    vscode
+    wpgtk
     yarn
+
+    # JetBrains
+    jetbrains.webstorm
+    jetbrains.datagrip
+    android-studio
   ];
 
   # This value determines the Home Manager release that your
