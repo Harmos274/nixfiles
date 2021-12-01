@@ -54,6 +54,8 @@
   home.packages = with pkgs; [
     # Fonts
     (nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
+    cozette
+    jetbrains-mono
     overpass
 
     ag
@@ -66,21 +68,24 @@
     jq
     lsd
     minecraft
+    neofetch
     ncdu
     newsflash
     nodejs_latest
+    postman
     pyright
     ripgrep
     rustup
     stack
+    vlc
     vscode
     wpgtk
     yarn
 
     # JetBrains
-    jetbrains.webstorm
-    jetbrains.datagrip
     android-studio
+    jetbrains.datagrip
+    jetbrains.webstorm
   ];
 
   # This value determines the Home Manager release that your
