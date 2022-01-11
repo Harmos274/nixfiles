@@ -1,4 +1,9 @@
 { config, pkgs, lib, ... }: {
+  imports =
+    [
+      ../addons/cli-suite.nix
+    ];
+
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
@@ -9,6 +14,7 @@
       mako # notification daemon
       kanshi # autorandr
       dmenu # menu
+      kitty # terminal
     ];
   };
 

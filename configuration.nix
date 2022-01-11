@@ -9,7 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./dewm/sway.nix # Include this for a lighter DE
+      ./dewm/sway.nix # Include this for a lighter DE
       ./addons/gaming.nix # Lutris, Steam etc... for G4MING
       ./addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
@@ -121,9 +121,10 @@
 
   # Set Neovim as default editor
   environment.variables.EDITOR = "nvim";
+  environment.variables.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
 
   # Add docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -139,8 +140,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 3000 5000 ];
+  networking.firewall.allowedUDPPorts = [ 3000 5000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

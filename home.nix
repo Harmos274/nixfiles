@@ -74,6 +74,7 @@
     nodejs_latest
     postman
     pyright
+    ripcord
     ripgrep
     rustup
     stack
