@@ -9,7 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./dewm/sway.nix # Include this for a lighter DE
+      # ./dewm/sway.nix # Include this for a lighter DE
       ./addons/gaming.nix # Lutris, Steam etc... for G4MING
       ./addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
@@ -124,7 +124,7 @@
   environment.variables.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
 
   # Add docker
-  virtualisation.docker.enable = false;
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
