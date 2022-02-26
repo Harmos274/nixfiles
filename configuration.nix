@@ -10,6 +10,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ./dewm/sway.nix # Include this for a lighter DE
+      # ./dewm/kdeplasma.nix # Include this for fucking plasma desktop
+      ./dewm/gnome.nix # Include this for Gnome (the best of all)
       ./addons/gaming.nix # Lutris, Steam etc... for G4MING
       ./addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
@@ -46,17 +48,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Exclude base gnome packages
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    epiphany
-    geary
-  ];
-
   # Configure keymap in X11
   services.xserver.layout = "fr";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -67,6 +58,15 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Prevent Spotify from muting when another audio source is running
+  hardware.pulseaudio.extraConfig = "unload-module module-role-cork";
+
+  # Enable pipewire backend
+  #services.pipewire = {
+  #  enable = true;
+  #  pulse.enable = true;
+  #};
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -91,18 +91,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    curl
+    #curl
     discord
-    docker-compose
     exfat-utils
     firefox
     fish
     gcc
     git
-    gnome.gnome-tweaks
     gnumake
     htop
-    #kitty
     neovim
     ntfs3g
     obsidian

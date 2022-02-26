@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> { };
+in
 {
   # Nix overlays
   nixpkgs.overlays = [
@@ -42,6 +45,18 @@
     enable = true;
     userName = "Lilian VERLHAC";
     userEmail = "lilian.verlhac@outlook.com";
+    extraConfig = {
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only --features=interactive";
+      delta = {
+        features = "decoration";
+        navigate = "true";
+        side-by-side = "true";
+        line-numbers = "false";
+      };
+      merge.conflictstyle = "diff3";
+      diff.colorMoved = "default";
+    };
   };
 
 
@@ -57,19 +72,21 @@
     cozette
     jetbrains-mono
     overpass
+    ibm-plex
 
     ag
     appimage-run
     azure-cli
     bat
+    delta
     deluge
     fzf
     inkscape
     jq
     lsd
     minecraft
-    neofetch
     ncdu
+    neofetch
     newsflash
     nodejs_latest
     postman
@@ -84,10 +101,9 @@
     yarn
 
     # JetBrains
-    android-studio
     jetbrains.datagrip
     jetbrains.webstorm
-  ];
+  ] ++ (with unstable; [ spot ]);
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
