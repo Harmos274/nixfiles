@@ -94,7 +94,7 @@ in
     ripcord
     ripgrep
     rustup
-    stack
+    #stack
     vlc
     vscode
     wpgtk
@@ -103,7 +103,8 @@ in
     # JetBrains
     jetbrains.datagrip
     jetbrains.webstorm
-  ] ++ (with unstable; [ spot ]);
+    jetbrains.idea-ultimate
+  ] ++ (with unstable; [ spot stack ]);
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

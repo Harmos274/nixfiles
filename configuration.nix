@@ -57,16 +57,61 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Prevent Spotify from muting when another audio source is running
   hardware.pulseaudio.extraConfig = "unload-module module-role-cork";
 
+  # Enable rtkit deamon
+  security.rtkit.enable = true;
+
   # Enable pipewire backend
-  #services.pipewire = {
-  #  enable = true;
-  #  pulse.enable = true;
-  #};
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    config.pipewire = {
+      "context.properties" = {
+        "link.max-buffers" = 16;
+        "log.level" = 2;
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 32;
+        "default.clock.min-quantum" = 32;
+        "default.clock.max-quantum" = 32;
+        "core.daemon" = true;
+        "core.name" = "pipewire-0";
+      };
+      "context.modules" = [
+        {
+          name = "libpipewire-module-rtkit";
+          args = {
+            "nice.level" = -15;
+            "rt.prio" = 88;
+            "rt.time.soft" = 200000;
+            "rt.time.hard" = 200000;
+          };
+          flags = [ "ifexists" "nofail" ];
+        }
+        { name = "libpipewire-module-protocol-native"; }
+        { name = "libpipewire-module-profiler"; }
+        { name = "libpipewire-module-metadata"; }
+        { name = "libpipewire-module-spa-device-factory"; }
+        { name = "libpipewire-module-spa-node-factory"; }
+        { name = "libpipewire-module-client-node"; }
+        { name = "libpipewire-module-client-device"; }
+        {
+          name = "libpipewire-module-portal";
+          flags = [ "ifexists" "nofail" ];
+        }
+        {
+          name = "libpipewire-module-access";
+          args = { };
+        }
+        { name = "libpipewire-module-adapter"; }
+        { name = "libpipewire-module-link-factory"; }
+        { name = "libpipewire-module-session-manager"; }
+      ];
+    };
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -86,13 +131,22 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
+  # Optimize Nix Store storage consumption
+  nix.autoOptimiseStore = true;
+
+  # Run Nix garbage collector every week
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #curl
-    discord
+    discord-canary
     exfat-utils
     firefox
     fish
@@ -115,7 +169,10 @@
     wget
   ];
 
-
+  nixpkgs.config.permittedInsecurePackages = [
+    # For old electron app (Discord, VSCode etc.)
+    "electron-13.6.9"
+  ];
   # Set Neovim as default editor
   environment.variables.EDITOR = "nvim";
   environment.variables.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";

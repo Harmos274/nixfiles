@@ -13,5 +13,6 @@
   environment.systemPackages = with pkgs; [
     lutris
     steam-run
+    desmume
   ];
 }
