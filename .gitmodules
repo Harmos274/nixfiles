@@ -1,9 +1,0 @@
-[submodule "hosts/common/dewm/sway"]
-	path = hosts/common/dewm/sway
-	url = git@github.com:Harmos274/sway-config.git
-[submodule "users/nuggets/home/shell/kitty"]
-	path = users/nuggets/home/shell/kitty
-	url = git@github.com:Harmos274/kitty-config.git
-[submodule "users/nuggets/home/shell/nvim"]
-	path = users/nuggets/home/shell/nvim
-	url = git@github.com:Harmos274/nvim.git
