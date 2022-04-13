@@ -9,11 +9,12 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./dewm/sway.nix # Include this for a lighter DE
-      # ./dewm/kdeplasma.nix # Include this for fucking plasma desktop
-      ./dewm/gnome.nix # Include this for Gnome (the best of all)
-      ./addons/gaming.nix # Lutris, Steam etc... for G4MING
-      ./addons/flatpak.nix # enable Flatpak and Flatpak builder
+
+      # ../common/dewm/sway.nix # Include this for a lighter DE
+      # ../common/dewm/kdeplasma.nix # Include this for fucking plasma desktop
+      ../common/dewm/gnome.nix # Include this for Gnome (the best of all)
+      ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
+      ../common/addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,7 +29,7 @@
   # Enble VFIO for hardware acceleration on virtualized devices
   boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
 
-  networking.hostName = "nuggets"; # Define your hostname.
+  #networking.hostName = "nuggets"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -129,15 +130,6 @@
 
   # Enable dconf editor
   programs.dconf.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nuggets = {
-    isNormalUser = true;
-    home = "/home/nuggets";
-    description = "Nuggets";
-    shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ];
-  };
 
   # Enable Nix Flakes
   nix = {
@@ -246,5 +238,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  #system.stateVersion = "21.05"; # Did you read the comment?
 }

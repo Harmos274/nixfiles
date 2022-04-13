@@ -1,14 +1,5 @@
 { config, pkgs, ... }:
-
-let
-  unstable = import <unstable> { };
-in
 {
-  # Nix overlays
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz))
-  ];
-
   imports = [
     ./python
     ./shell
@@ -98,7 +89,7 @@ in
     jetbrains.datagrip
     jetbrains.webstorm
     jetbrains.idea-ultimate
-  ] ++ (with unstable; [ spot stack ]);
+  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -108,5 +99,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  # home.stateVersion = "21.05";
 }

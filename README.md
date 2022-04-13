@@ -10,25 +10,14 @@ i am very new in the nix/os world. Secondly, i also want to use my configuration
 therefore i have to use a maximum amount of raw config files.
 
 ## Install
-Nix and home-manager are required.
+Nix flake and home-manager are required.
 
-### Before install
-```sh
-$> git submodule update --init
-```
-
-### configuration.nix
+### flake.nix
 You may need to `chown` `/etc/nixos/` before.
 
 ```sh
 $> cd nixfiles
-$> ln -sf $PWD/configuration.nix /etc/nixos/configuration.nix
-$> sudo nixos-rebuild switch
+$> ln -sf $PWD/flake.nix /etc/nixos/flake.nix
+$> sudo nixos-rebuild switch --flake .
+$> home-manager switch --flake .
 ```
-
-### home.nix
-```sh
-$> cd nixfiles
-$> home-manager switch
-```
-
