@@ -4,6 +4,7 @@
 
   # Exclude base gnome packages
   environment.gnome.excludePackages = with pkgs.gnome; [
+    gnome-remote-desktop
     epiphany
     geary
   ];

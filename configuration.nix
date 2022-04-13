@@ -20,6 +20,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable KVM / QEmu backend
+  boot.extraModprobeConfig = "options kvm_intel nested=1 vfio-pci ids=8086:5917";
+
+  boot.kernelParams = [ "intel_iommu=on" ];
+
+  # Enble VFIO for hardware acceleration on virtualized devices
+  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+
   networking.hostName = "nuggets"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -69,48 +77,48 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-    config.pipewire = {
-      "context.properties" = {
-        "link.max-buffers" = 16;
-        "log.level" = 2;
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 32;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 32;
-        "core.daemon" = true;
-        "core.name" = "pipewire-0";
-      };
-      "context.modules" = [
-        {
-          name = "libpipewire-module-rtkit";
-          args = {
-            "nice.level" = -15;
-            "rt.prio" = 88;
-            "rt.time.soft" = 200000;
-            "rt.time.hard" = 200000;
-          };
-          flags = [ "ifexists" "nofail" ];
-        }
-        { name = "libpipewire-module-protocol-native"; }
-        { name = "libpipewire-module-profiler"; }
-        { name = "libpipewire-module-metadata"; }
-        { name = "libpipewire-module-spa-device-factory"; }
-        { name = "libpipewire-module-spa-node-factory"; }
-        { name = "libpipewire-module-client-node"; }
-        { name = "libpipewire-module-client-device"; }
-        {
-          name = "libpipewire-module-portal";
-          flags = [ "ifexists" "nofail" ];
-        }
-        {
-          name = "libpipewire-module-access";
-          args = { };
-        }
-        { name = "libpipewire-module-adapter"; }
-        { name = "libpipewire-module-link-factory"; }
-        { name = "libpipewire-module-session-manager"; }
-      ];
-    };
+    #config.pipewire = {
+    #  "context.properties" = {
+    #    "link.max-buffers" = 16;
+    #    "log.level" = 2;
+    #    "default.clock.rate" = 48000;
+    #    "default.clock.quantum" = 32;
+    #    "default.clock.min-quantum" = 32;
+    #    "default.clock.max-quantum" = 32;
+    #    "core.daemon" = true;
+    #    "core.name" = "pipewire-0";
+    #  };
+    #  "context.modules" = [
+    #    {
+    #      name = "libpipewire-module-rtkit";
+    #      args = {
+    #        "nice.level" = -15;
+    #        "rt.prio" = 88;
+    #        "rt.time.soft" = 200000;
+    #        "rt.time.hard" = 200000;
+    #      };
+    #      flags = [ "ifexists" "nofail" ];
+    #    }
+    #    { name = "libpipewire-module-protocol-native"; }
+    #    { name = "libpipewire-module-profiler"; }
+    #    { name = "libpipewire-module-metadata"; }
+    #    { name = "libpipewire-module-spa-device-factory"; }
+    #    { name = "libpipewire-module-spa-node-factory"; }
+    #    { name = "libpipewire-module-client-node"; }
+    #    { name = "libpipewire-module-client-device"; }
+    #    {
+    #      name = "libpipewire-module-portal";
+    #      flags = [ "ifexists" "nofail" ];
+    #    }
+    #    {
+    #      name = "libpipewire-module-access";
+    #      args = { };
+    #    }
+    #    { name = "libpipewire-module-adapter"; }
+    #    { name = "libpipewire-module-link-factory"; }
+    #    { name = "libpipewire-module-session-manager"; }
+    #  ];
+    #};
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -128,7 +136,15 @@
     home = "/home/nuggets";
     description = "Nuggets";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ];
+  };
+
+  # Enable Nix Flakes
+  nix = {
+    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # Optimize Nix Store storage consumption
@@ -163,6 +179,7 @@
     teamspeak_client
     thunderbird
     tree
+    virt-manager
     vivaldi
     vivaldi-ffmpeg-codecs
     vivaldi-widevine
@@ -177,8 +194,32 @@
   environment.variables.EDITOR = "nvim";
   environment.variables.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
 
-  # Add docker
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.ovmf.enable = true;
+    };
+    kvmgt = {
+      enable = true;
+      vgpus = {
+        "i915-GVTg_V5_4" = {
+          uuid = [ "d506acc8-b8ee-11ec-a781-ff42d1c0b289" ];
+        };
+      };
+    };
+    docker.enable = true;
+  };
+
+  # Enable Intel accelerated graphics
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

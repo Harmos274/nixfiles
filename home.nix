@@ -6,19 +6,14 @@ in
 {
   # Nix overlays
   nixpkgs.overlays = [
-    (
-      import (
-        builtins.fetchTarball {
-          url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-        }
-      )
-    )
+    (import (builtins.fetchTarball https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz))
   ];
 
   imports = [
     ./python
     ./shell
     ./latex
+    ./custom-fonts
   ];
 
   # Let Home Manager install and manage itself.
@@ -58,7 +53,6 @@ in
       diff.colorMoved = "default";
     };
   };
-
 
   # enable font configuration
   fonts.fontconfig.enable = true;

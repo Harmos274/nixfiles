@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./fish.nix
+    # ./doom-emacs.nix
     ./neovim.nix
     ./kitty.nix
+    ./fish.nix
   ];
-
 
   programs = { };
 }
