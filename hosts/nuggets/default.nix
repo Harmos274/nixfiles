@@ -9,11 +9,12 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./dewm/sway.nix # Include this for a lighter DE
-      # ./dewm/kdeplasma.nix # Include this for fucking plasma desktop
-      ./dewm/gnome.nix # Include this for Gnome (the best of all)
-      ./addons/gaming.nix # Lutris, Steam etc... for G4MING
-      ./addons/flatpak.nix # enable Flatpak and Flatpak builder
+
+      # ../common/dewm/sway.nix # Include this for a lighter DE
+      # ../common/dewm/kdeplasma.nix # Include this for fucking plasma desktop
+      ../common/dewm/gnome.nix # Include this for Gnome (the best of all)
+      ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
+      ../common/addons/flatpak.nix # enable Flatpak and Flatpak builder
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -129,15 +130,6 @@
 
   # Enable dconf editor
   programs.dconf.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nuggets = {
-    isNormalUser = true;
-    home = "/home/nuggets";
-    description = "Nuggets";
-    shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ];
-  };
 
   # Enable Nix Flakes
   nix = {

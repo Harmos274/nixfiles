@@ -4,6 +4,6 @@
 [submodule "shell/kitty"]
 	path = shell/kitty
 	url = git@github.com:Harmos274/kitty-config.git
-[submodule "dewm/sway"]
-	path = dewm/sway
+[submodule "hosts/common/dewm/sway"]
+	path = hosts/common/dewm/sway
 	url = git@github.com:Harmos274/sway-config.git

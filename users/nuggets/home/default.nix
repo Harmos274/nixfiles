@@ -1,8 +1,4 @@
 { config, pkgs, ... }:
-
-let
-  unstable = import <unstable> { };
-in
 {
   # Nix overlays
   nixpkgs.overlays = [
@@ -98,7 +94,7 @@ in
     jetbrains.datagrip
     jetbrains.webstorm
     jetbrains.idea-ultimate
-  ] ++ (with unstable; [ spot stack ]);
+  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
