@@ -1,18 +1,21 @@
-{ inputs }:
+{ inputs, overlays }:
 {
-  mkSystem = { hosname, system, users ? [ ] }:
+  mkSystem = { hostname, system, users ? [ ] }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs system hostname;
       };
-      modules = builtins.attrValues [
+      modules = [
         ../hosts/${hostname}
         {
-          networking.hostname = hostname;
+          networking.hostName = hostname;
 
           # Allow unfree packages
-          nixpkgs.allowUnfree = true;
+          nixpkgs = {
+            inherit overlays;
+            config.allowUnfree = true;
+          };
 
           # Add each input as a registry
           nix.registry = inputs.nixpkgs.lib.mapAttrs'
@@ -26,13 +29,14 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit username system;
       extraSpecialArgs = {
-        inherit system hostname persistence graphical trusted;
+        inherit system hostname;
       };
       homeDirectory = "/home/${username}";
-      configuation = ../users/${username}/home;
+      configuration = ../users/${username}/home;
       extraModules = [
         {
           nixpkgs = {
+            inherit overlays;
             config.allowUnfree = true;
           };
           programs = {

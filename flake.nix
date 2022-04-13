@@ -6,13 +6,16 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs:
     let
-      lib = import ./lib { inherit inputs; };
+      overlays = with inputs; [ neovim-nightly-overlay.overlay ];
+      lib = import ./lib { inherit inputs overlays; };
     in
     {
       nixosConfigurations = {
