@@ -1,21 +1,15 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      # ../common/dewm/sway.nix # Include this for a lighter DE
-      # ../common/dewm/kdeplasma.nix # Include this for fucking plasma desktop
-      ../common/dewm/gnome.nix # Include this for Gnome (the best of all)
-      ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
-      ../common/addons/flatpak.nix # enable Flatpak and Flatpak builder
-    ];
+    # ../common/dewm/sway.nix # Include this for a lighter DE
+    # ../common/dewm/kdeplasma.nix # Include this for fucking plasma desktop
+    ../common/dewm/gnome.nix # Include this for Gnome (the best of all)
+    ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
+    ../common/addons/flatpak.nix # enable Flatpak and Flatpak builder
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -153,7 +147,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #curl
+    curl
     discord-canary
     exfat-utils
     firefox
@@ -182,6 +176,7 @@
     # For old electron app (Discord, VSCode etc.)
     "electron-13.6.9"
   ];
+
   # Set Neovim as default editor
   environment.variables.EDITOR = "nvim";
   environment.variables.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
@@ -200,17 +195,6 @@
       };
     };
     docker.enable = true;
-  };
-
-  # Enable Intel accelerated graphics
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
