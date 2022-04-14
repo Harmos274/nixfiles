@@ -12,14 +12,8 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- packer self management
 
   -- Colorscheme
-  use { 'marko-cerovac/material.nvim', config = require('plugins.material') }
-
-  use {
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    tag = 'v1.*',
-    config = require('plugins.rose-pine')
-  }
+  -- use { 'marko-cerovac/material.nvim', config = require('plugins.material') }
+  use { 'rose-pine/neovim', as = 'rose-pine', tag = 'v1.*', config = require('plugins.rose-pine') }
 
   -- StatusLine
   use { 'hoob3rt/lualine.nvim', config = require('plugins.lualine') }

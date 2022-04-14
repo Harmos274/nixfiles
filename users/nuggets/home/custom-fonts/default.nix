@@ -1,16 +1,14 @@
 { config, pkgs, lib, ... }:
 let
-  customFontPaths = {
-    operatorMonoLig = ./OperatorMonoLig;
-    sFMono = ./SFMono;
-  };
+  fontPaths = [ ./OperatorMonoLig ./SFMono ];
+
+  installFonts = paths: lib.mkMerge
+    ((map
+      ({ name, path }: { home.file.".local/share/fonts/${name}".source = "${path}/${name}"; })
+      (builtins.concatMap
+        (path: map
+          (file: { name = file; path = path; })
+          (builtins.attrNames (builtins.readDir path)))
+        paths)) ++ [{ home.activation.cacheFonts = ''fc-cache''; }]);
 in
-{
-  home.activation.installMyFonts = ''
-    echo ":: Installing Operator Mono Lig..."
-    cp ${customFontPaths.operatorMonoLig}/* $HOME/.local/share/fonts/
-    echo ":: Installing San Fransisco Mono..."
-    cp ${customFontPaths.sFMono}/* $HOME/.local/share/fonts/
-    fc-cache
-  '';
-}
+installFonts fontPaths
