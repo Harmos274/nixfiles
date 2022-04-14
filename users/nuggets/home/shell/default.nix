@@ -6,6 +6,4 @@
     ./kitty.nix
     ./fish.nix
   ];
-
-  programs = { };
 }
