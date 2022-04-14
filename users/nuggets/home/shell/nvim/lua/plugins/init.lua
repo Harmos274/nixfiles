@@ -14,6 +14,13 @@ require('packer').startup(function(use)
   -- Colorscheme
   use { 'marko-cerovac/material.nvim', config = require('plugins.material') }
 
+  use {
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    tag = 'v1.*',
+    config = require('plugins.rose-pine')
+  }
+
   -- StatusLine
   use { 'hoob3rt/lualine.nvim', config = require('plugins.lualine') }
 

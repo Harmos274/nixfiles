@@ -1,5 +1,5 @@
 return function ()
-  local theme = require('lualine.themes.material-nvim')
+  local theme = require('lualine.themes.rose-pine')
 
   -- Set the line background to the buffer background color
   theme.normal.c.bg = '#292d3e'
