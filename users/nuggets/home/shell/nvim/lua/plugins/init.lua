@@ -45,7 +45,19 @@ require('packer').startup(function(use)
   use { 'junegunn/vim-easy-align' }
 
   -- Autocompletion
-  use { 'hrsh7th/nvim-compe', config = require('plugins.compe') }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+    },
+    config = require('plugins.cmp'),
+  }
+
+  -- Snippet for nvim-cmp
+  use { 'hrsh7th/vim-vsnip', config = require('plugins.vsnip') }
 
   -- Treesitter
   use {
