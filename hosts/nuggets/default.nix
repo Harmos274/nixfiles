@@ -71,7 +71,15 @@
   # Enable pipewire backend
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    # No idea if I need this
+    alsa.support32Bit = true;
     pulse.enable = true;
+    config.pipewire = {
+      "context.properties" = {
+        default.clock.allowed-rates = [ 44100 48000 ];
+      };
+    };
     #config.pipewire = {
     #  "context.properties" = {
     #    "link.max-buffers" = 16;
