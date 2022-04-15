@@ -3,12 +3,6 @@ return function ()
   local map = require('utils').map
 
   require('nvim-tree').setup {
-    update_cwd = true,
-    open_on_tab = true,
-    ignore_buffer_on_setup = true,
-    update_focused_file = {
-      enable = true,
-    },
     diagnostics = {
       enable = true,
       show_on_dirs = true,

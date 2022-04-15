@@ -1,10 +1,9 @@
 return function ()
   local theme = require('lualine.themes.rose-pine')
 
-  -- Set the line background to the buffer background color
-  theme.normal.c.bg = '#292d3e'
-  theme.inactive.c.bg = '#292d3e'
-
+  -- Themes override
+  -- theme.normal.c.bg = '#292d3e'
+  -- theme.inactive.c.bg = '#292d3e'
 
   -- local diagnostics = {
   --   'diagnostics',
