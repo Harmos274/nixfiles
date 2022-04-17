@@ -25,4 +25,6 @@ return function ()
 
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+  vim.wo.foldtext= [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... '.trim(getline(v:foldend))]]
+  vim.opt.fillchars = "fold: "
 end
