@@ -164,6 +164,7 @@
     git
     gnumake
     htop
+    ncdu
     neovim
     ntfs3g
     obsidian
