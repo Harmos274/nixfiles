@@ -156,7 +156,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
-    discord-canary
+    unlaggy-discord-canary
     exfat-utils
     firefox
     fish

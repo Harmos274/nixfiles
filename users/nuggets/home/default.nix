@@ -51,6 +51,7 @@
     appimage-run
     azure-cli
     bat
+    cawbird
     delta
     deluge
     fzf

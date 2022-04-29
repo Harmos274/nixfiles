@@ -14,7 +14,15 @@
 
   outputs = inputs:
     let
-      overlays = with inputs; [ neovim-nightly-overlay.overlay ];
+      overlays = with inputs; [
+        neovim-nightly-overlay.overlay
+        (final: prev: {
+          unlaggy-discord-canary = prev.discord-canary.overrideAttrs (_: {
+            commandLineArgs =
+              "--ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy";
+          });
+        })
+      ];
       lib = import ./lib { inherit inputs overlays; };
     in
     {

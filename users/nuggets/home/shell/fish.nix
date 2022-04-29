@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 {
+  programs.starship = {
+    enable = true;
+    settings = {
+      time.format = "";
+    };
+  };
+
   programs.fish = {
     enable = true;
 
@@ -19,3 +26,4 @@
     };
   };
 }
+
