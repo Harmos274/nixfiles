@@ -55,6 +55,9 @@
   services.xserver.layout = "fr";
   # services.xserver.xkbOptions = "eurosign:e";
 
+  # Use same config for linux console
+  console.useXkbConfig = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 

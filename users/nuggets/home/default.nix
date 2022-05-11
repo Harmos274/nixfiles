@@ -68,7 +68,6 @@
     ripcord
     ripgrep
     rustup
-    #stack
     vlc
     vscode
     wpgtk
