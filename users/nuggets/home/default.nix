@@ -22,6 +22,9 @@
     enable = true;
     userName = "Lilian VERLHAC";
     userEmail = "lilian.verlhac@outlook.com";
+    aliases = {
+      puhs = "push";
+    };
     extraConfig = {
       core.pager = "delta";
       interactive.diffFilter = "delta --color-only --features=interactive";

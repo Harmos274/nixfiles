@@ -5,5 +5,6 @@
     ./neovim.nix
     ./kitty.nix
     ./fish.nix
+    ./foot.nix
   ];
 }
