@@ -57,6 +57,7 @@
     cawbird
     delta
     deluge
+    easy-ps.purs
     fzf
     inkscape
     jq
