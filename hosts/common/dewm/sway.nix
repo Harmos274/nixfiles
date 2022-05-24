@@ -14,6 +14,7 @@
     extraPackages = with pkgs; [
       brightnessctl # control brightness
       foot # terminal
+      grim # screenshots
       kanshi # autorandr
       kitty # terminal
       mako # notification daemon

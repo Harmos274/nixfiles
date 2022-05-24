@@ -6,7 +6,7 @@
     "name": "top",
     "layer": "top",
     "position": "top",
-    "modules-right": ["tray", "custom/vm", "disk", "memory", "backlight", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "disk", "memory", "backlight", "pulseaudio", "network", "battery", "clock"],
     "modules-left": ["sway/workspaces", "sway/mode"],
     "sway/workspaces": {
         //"format": "{icon} {name}",
@@ -141,8 +141,8 @@
         "format": "   ",
         "interval": 10,
         "return-type": "json",
-        "exec": "~/.config/waybar/custom/kvm-monitor.sh",
-        "on-click": "~/.config/waybar/custom/kvm.sh"
+        //"exec": "~/.config/waybar/custom/kvm-monitor.sh",
+        //"on-click": "~/.config/waybar/custom/kvm.sh"
     },
     "custom/containers": {
         "format": " ",

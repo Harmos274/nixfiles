@@ -16,7 +16,7 @@ set $right l
 set $down j
 
 # Gaps
-set $default_gap 15
+set $default_gap 5
 
 # Your preferred terminal emulator
 set $term kitty
@@ -106,6 +106,10 @@ gaps inner $default_gap
     # Reload the configuration file
     bindsym $mod+Shift+r reload
 
+    # Screenshots
+    bindsym Print exec sh -c "slurp | grim -g - - | wl-copy"
+    bindsym Shift+Print exec sh -c "swaymsg -t get_tree | jq '.. | select(.type == \\"con\\" or .type == \\"floating_con\\")? | select(.visible == true) | .rect | \\"\(.x),\(.y) \(.width)x\(.height)\\"' | tr -d \\\\\\" | slurp -r | grim -g - - | wl-copy"
+
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
@@ -115,7 +119,7 @@ gaps inner $default_gap
 # Sound / Brightness Control
 #
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-    bindsym XF86MonBrightnessDown exec brightnessctl set -5%
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
     bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
     bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
@@ -236,6 +240,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# haha
+mode "nobind" {
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "nobind"
 #
 # Status Bar:
 #
