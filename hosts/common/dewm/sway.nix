@@ -12,6 +12,7 @@
       export _JAVA_AWT_WM_NONREPARENTING=1
     '';
     extraPackages = with pkgs; [
+      brightnessctl # control brightness
       foot # terminal
       kanshi # autorandr
       kitty # terminal

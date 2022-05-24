@@ -1,194 +1,285 @@
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
+@define-color trans             rgba(28, 28, 28, .0);
+@define-color black             #1c1c1c;
+@define-color black-two         #252525;
+@define-color black-trans       rgba(35, 35, 35, .95);
+@define-color blue              #437890;
+@define-color blue-light        #87afd7;
+@define-color yellow            #7c794e;
+@define-color yellow-light      #9b9761;
+@define-color red               #755754;
+@define-color green             #497964;
+@define-color grey              #545555;
+@define-color grey-light        #8e8e8e;
+@define-color white             #ababaa;
+@define-color orange            #9b885c;
+@define-color orange-darker     #756643;
+@define-color purple            #6b6098;
+@define-color purple-light      #988acf;
+@define-color turquoise         #268889;
+@define-color turquoise-light   #4dc5c6;
 
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
 
-@keyframes blink-warning {
-    70% {
-        color: white;
-    }
-
-    to {
-        color: white;
-        background-color: orange;
-    }
+.modules-right {
+    font-family:    "IBM Plex Mono";
+    font-size:      15px;
 }
 
-@keyframes blink-critical {
-    70% {
-      color: white;
-    }
-
-    to {
-        color: white;
-        background-color: red;
-    }
+.modules-center {
+    font-family:    "IBM Plex Mono";
+    font-size:      15px;
 }
 
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
-* {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+.modules-left {
+    font-family:    "IBM Plex Mono";
+    font-size:      15px;
 }
 
-/* The whole bar */
-#waybar {
-    background: #323232;
-    color: white;
-    font-family: DejaVu Sans Mono, Cantarell, Noto Sans, sans-serif;
-    font-size: 11px;
+tooltip {
+  font-family:      "IBM Plex Mono";
+  font-size:        20px;
+  background:       @black-trans;
+  border:           2px solid @purple-light;
+}
+tooltip label {
+  color: @grey-light;
 }
 
-/* Each module */
-#battery,
-#clock,
-#cpu,
-#custom-keyboard-layout,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#tray {
-    padding-left: 10px;
-    padding-right: 10px;
+window#waybar {
+    background: @trans;
+}
+/* window#waybar { */
+/*     background: @black-two; */
+/* } */
+
+window#waybar.bottom {
+    background: @trans;
+    border:     none;
 }
 
+/* === work spaces === */
 
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: orange;
-}
-
-#battery.critical {
-    color: red;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#cpu {
-  /* No styles */
-}
-
-#cpu.warning {
-    color: orange;
-}
-
-#cpu.critical {
-    color: red;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#memory.warning {
-    color: orange;
-}
-
-#memory.critical {
-    color: red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    background: #64727D;
-    border-top: 2px solid white;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-}
-
-#network {
-    /* No styles */
-}
-
-#network.disconnected {
-    color: orange;
-}
-
-#pulseaudio {
-    /* No styles */
-}
-
-#pulseaudio.muted {
-    /* No styles */
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
-#temperature {
-    /* No styles */
-}
-
-#temperature.critical {
-    color: red;
-}
-
-#tray {
-    /* No styles */
-}
-
-#window {
-    font-weight: bold;
+#workspaces {
+    padding:            0px 0px 0px 0px;
+    border-radius:      0px 0px 0px 0px;
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #888888;
+    margin:             0px 0px 0px 0px;
+    padding:            0px 5px 0px 5px;
+    color:              @grey-light;
+    border-radius:      0px;
+    border-bottom:      4px solid @trans;
 }
 
 #workspaces button.focused {
-    border-color: #4c7899;
-    color: white;
-    background-color: #285577;
+    color:              @white;
+    font-weight:        bold;
+    border-bottom:      4px solid @purple-light;
+    background:         rgba(85, 85, 85, .4);
 }
 
 #workspaces button.urgent {
-    border-color: #c9545d;
-    color: #c9545d;
+    color:              @red;
+}
+
+#custom-spotify-metadata, #custom-spotify-play-pause, #custom-spotify-prev, #custom-spotify-next, #custom-spotify-quit {
+    color:              @grey-light;
+    padding:            7px 0px 7px 0px;
+    border-left:        3px solid @green;
+    font-size:          18px;
+}
+
+#custom-spotify-metadata {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-metadata.playing {
+    color:              @green;
+    border-left:        3px solid @green;
+}
+#custom-spotify-metadata.paused {
+    color:              @yellow;
+    border-left:        3px solid @yellow;
+}
+#custom-spotify-prev {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-play-pause {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-next {
+    margin:             0px 0px 0px 1px;
+}
+#custom-spotify-quit {
+    margin:             0px 0px 0px 1px;
+}
+
+#clock, #mode {
+    margin:             0px 15px 0px 15px;
+    padding:            0px 0px 0px 0px;
+    color:              @white;
+}
+
+#mode {
+    font-size:          18px;
+}
+
+#clock, #tray, #custom-vm, #custom-notification, #custom-containers, #custom-wfrecord, #custom-grimshot, #battery, #disk, #cpu, #memory, #temperature, #memory, #network, #pulseaudio, #backlight, #idle_inhibitor {
+    margin:             5px 10px 0px 10px;
+    padding:            0px 6px 0px 6px;
+    color:              @white;
+    border-top:         3px solid @white;
+    font-size:          20px;
+}
+
+#clock {
+    font-size: 18px;
+    border-top:        3px solid @grey;
+}
+
+#custom-notification {
+  border-top:        3px solid @grey;
+  font-family:       "NotoSansMono Nerd Font";
+}
+
+#idle_inhibitor {
+    color:              @grey;
+    border-top:         3px solid @grey;
+    font-size:          15px;
+}
+
+#idle_inhibitor.activated {
+    color:              @blue-light;
+    border-top:        3px solid @blue-light;
+}
+
+#tray {
+    border-top:        3px solid @green;
+}
+
+#custom-wfrecord {
+    font-size:          13px;
+}
+#custom-grimshot {
+    font-size:          15px;
+}
+
+#custom-wfrecord.recording {
+    color:              @green;
+    border-top:        3px solid @green;
+}
+
+#custom-vm {
+    font-size:          13.5px;
+}
+#custom-vm.running {
+    color:              @blue-light;
+    border-top:        3px solid @blue-light;
+}
+
+#custom-containers {
+    font-size:          14.8px;
+}
+#custom-containers.running {
+    color:              @blue-light;
+    border-top:        3px solid @blue-light;
+}
+
+#memory {
+  font-size:           18px;
+}
+#memory.low {
+    border-top:        3px solid @blue;
+}
+#memory.mid {
+    border-top:        3px solid @yellow;
+}
+#memory.high {
+    border-top:        3px solid @red;
+}
+
+#cpu {
+    font-weight:        bold;
+}
+#cpu.low {
+    border-top:        3px solid @blue;
+}
+#cpu.mid {
+    border-top:        3px solid @yellow;
+}
+#cpu.high {
+    border-top:        3px solid @red;
+}
+
+#disk {
+    font-weight:        bold;
+    font-size:          18px;
+}
+#disk.low {
+    border-top:        3px solid @blue;
+}
+#disk.mid {
+    border-top:        3px solid @yellow;
+}
+#disk.high {
+    border-top:        3px solid @red;
+}
+
+#temperature {
+    font-size:          15px;
+    font-weight:        bold;
+    border-top:        3px solid @blue;
+}
+#temperature.critical {
+    border-top:        3px solid @red;
+}
+
+#network {
+    border-top:         3px solid @blue;
+    font-size:           18px;
+}
+#network.disconnected {
+    border-top:         3px solid @red;
+}
+
+#battery {
+    font-size:          18px;
+    border-top:         3px solid @green;
+}
+#battery.warning {
+    border-top:         3px solid @yellow;
+}
+#battery.critical {
+    border-top:         3px solid @red;
+}
+#battery.charging {
+    border-top:         3px solid @green;
+}
+
+#backlight {
+    font-size:           18px;
+}
+#backlight.low {
+    border-top:         3px solid @blue;
+}
+#backlight.mid {
+    border-top:         3px solid @yellow;
+}
+#backlight.high {
+    border-top:         3px solid @red;
+}
+
+#pulseaudio {
+    font-size:           18px;
+}
+#pulseaudio.low {
+    border-top:         3px solid @blue;
+}
+#pulseaudio.mid {
+    border-top:         3px solid @yellow;
+}
+#pulseaudio.high {
+    border-top:         3px solid @red;
+}
+#pulseaudio.muted {
+    border-top:         3px solid @red;
 }

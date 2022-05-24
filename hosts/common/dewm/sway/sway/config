@@ -112,6 +112,16 @@ gaps inner $default_gap
     # Lock sway
     bindsym $mod+Alt+l exec swaylock -f -c $bgcolor
 #
+# Sound / Brightness Control
+#
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    bindsym XF86MonBrightnessDown exec brightnessctl set -5%
+
+    bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+    bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+    bindsym XF86AudioMute exec amixer sset 'Master' toggle
+    bindsym XF86AudioMicMute exec amixer sset 'Capture' toggle
+#
 # Moving around:
 #
     # Move your focus around
