@@ -21,8 +21,14 @@ require('packer').startup(function(use)
   -- Nix file support
   use 'LnL7/vim-nix'
 
+  -- PureScript file support
+  use 'purescript-contrib/purescript-vim'
+
   -- Best trailing whitespace plugin (trails only on modified buffers and don't move the cursor)
   use 'axelf4/vim-strip-trailing-whitespace'
+
+  -- User custom dressing on trees
+  use { 'stevearc/dressing.nvim', config = function() require('dressing').setup() end }
 
   -- LSP
   use {

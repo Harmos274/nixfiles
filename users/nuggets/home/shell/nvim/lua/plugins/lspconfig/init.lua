@@ -52,6 +52,7 @@ return function ()
     { name = 'rnix' },
     { name = 'bashls' },
     { name = 'pyright' },
+    { name = 'purescriptls'},
   }
 
   capabilities.textDocument.completion.completionItem.snippetSupport = true

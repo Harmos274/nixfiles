@@ -6,15 +6,24 @@
 
   programs.sway = {
     enable = true;
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = ''
+      export MOZ_ENABLE_WAYLAND=1
+      export _JAVA_AWT_WM_NONREPARENTING=1
+    '';
     extraPackages = with pkgs; [
-      swaylock # lockscreen
-      swayidle
-      xwayland # for legacy apps
-      waybar # status bar
-      mako # notification daemon
+      foot # terminal
       kanshi # autorandr
-      dmenu # menu
       kitty # terminal
+      mako # notification daemon
+      slurp # screensharing
+      swayidle
+      swaylock # lockscreen
+      waybar # status bar
+      wl-clipboard
+      wofi # alt dmenu
+      xdg-desktop-portal-wlr
+      xwayland # for legacy apps
     ];
   };
 
@@ -24,6 +33,7 @@
       "sway/config".source = ./sway/sway/config;
       "xdg/waybar/config".source = ./sway/waybar/config;
       "xdg/waybar/style.css".source = ./sway/waybar/style.css;
+      "wofi/style.css".source = ./sway/wofi/style.css;
     };
   };
 

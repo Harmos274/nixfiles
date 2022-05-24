@@ -23,6 +23,7 @@
 
       # LSP
       easy-hls
+      easy-ps.purescript-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
       rnix-lsp

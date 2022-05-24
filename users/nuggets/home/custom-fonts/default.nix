@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  fontPaths = [ ./OperatorMonoLig ./SFMono ];
+  fontPaths = [ ./OperatorMonoLig ./SFMono ./ComicCodeLig ];
 in
 lib.mkMerge ((map
   ({ name, path }: { home.file.".local/share/fonts/${name}".source = "${path}/${name}"; })

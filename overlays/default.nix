@@ -6,6 +6,7 @@ final: prev:
       "--ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy";
   });
 
+
   # Add packages for purescript with nix
   easy-ps = prev.callPackage import
     (prev.pkgs.fetchFromGitHub {

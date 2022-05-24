@@ -28,9 +28,6 @@
     "modules-right": [
         "network",
         "memory",
-        "cpu",
-        "temperature",
-        "custom/keyboard-layout",
         "battery",
         "tray",
         "clock#date",
