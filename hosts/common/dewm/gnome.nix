@@ -6,7 +6,6 @@
   environment.gnome.excludePackages = with pkgs.gnome; [
     gnome-remote-desktop
     epiphany
-    geary
   ];
 
   environment.systemPackages = with pkgs; [

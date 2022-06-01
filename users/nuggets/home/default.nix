@@ -50,7 +50,6 @@
     overpass
     ibm-plex
 
-    ag
     appimage-run
     azure-cli
     bat
@@ -73,6 +72,7 @@
     ripcord
     ripgrep
     rustup
+    silver-searcher
     vlc
     vscode
     wpgtk
@@ -84,3 +84,4 @@
     jetbrains.idea-ultimate
   ];
 }
+

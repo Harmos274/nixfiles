@@ -16,7 +16,7 @@ set $right l
 set $down j
 
 # Gaps
-set $default_gap 5
+set $default_gap 10
 
 # Your preferred terminal emulator
 set $term kitty
