@@ -8,14 +8,14 @@ final: prev:
 
 
   # Add packages for purescript with nix
-  easy-ps = prev.callPackage import
-    (prev.pkgs.fetchFromGitHub {
-      owner = "justinwoo";
-      repo = "easy-purescript-nix";
-      rev = "cbcb53725c430de4e69f652d69c1677e17c6bcec";
-      sha256 = "1r9lx4xhr42znmwb2x2pzah920klbjbjcivp2f0pnka7djvd2adq";
-    })
-    { pkgs = prev.pkgs; };
+  # easy-ps = prev.callPackage import
+  #   (prev.pkgs.fetchFromGitHub {
+  #     owner = "justinwoo";
+  #     repo = "easy-purescript-nix";
+  #     rev = "cbcb53725c430de4e69f652d69c1677e17c6bcec";
+  #     sha256 = "1r9lx4xhr42znmwb2x2pzah920klbjbjcivp2f0pnka7djvd2adq";
+  #   })
+  #   { pkgs = prev.pkgs; };
 
   # Add haskell-language-server
   easy-hls = prev.callPackage

@@ -7,6 +7,7 @@
     ./custom-fonts
   ];
 
+
   # Environment variables for Nuggets
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -56,13 +57,13 @@
     cawbird
     delta
     deluge
-    easy-ps.purs
-    easy-ps.spago
+    #easy-ps.purs
+    #easy-ps.spago
     fzf
     inkscape
     jq
     lsd
-    minecraft
+    #minecraft
     ncdu
     neofetch
     newsflash
@@ -83,5 +84,6 @@
     jetbrains.webstorm
     jetbrains.idea-ultimate
   ];
+  home.stateVersion = "20.09";
 }
 
