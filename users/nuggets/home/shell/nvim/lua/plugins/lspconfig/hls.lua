@@ -1,7 +1,7 @@
 return {
   name = 'hls',
 
-  on_attach = function ()
+  on_attach = function()
     vim.cmd([[
       augroup lspAutoFormat
         autocmd!

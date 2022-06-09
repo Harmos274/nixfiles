@@ -6,7 +6,6 @@ final: prev:
       "--ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy";
   });
 
-
   # Add packages for purescript with nix
   # easy-ps = prev.callPackage import
   #   (prev.pkgs.fetchFromGitHub {
@@ -22,8 +21,10 @@ final: prev:
     (prev.pkgs.fetchFromGitHub {
       owner = "jkachmar";
       repo = "easy-hls-nix";
-      rev = "20451bf65497fe9f8a972671e9925bd41e7ee15e";
-      sha256 = "Yd99o51HlzSYIKIMrYfdcumDyQ3Fz0S+r7G5PcCtXOM=";
+      rev = "ecb85ab6ba0aab0531fff32786dfc51feea19370";
+      sha256 = "sha256-wkKDVVL2/rUGokxs4kqCE+ZzxljBqYDZvBuQGVGXYJM=";
     })
-    { };
+    {
+      ghcVersions = [ "9.0.2" ];
+    };
 }

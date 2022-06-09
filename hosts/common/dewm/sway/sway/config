@@ -19,7 +19,8 @@ set $down j
 set $default_gap 10
 
 # Your preferred terminal emulator
-set $term kitty
+exec foot --server
+set $term sh -c "footclient || (foot --server && footclient)"
 
 # Your preferred color 🐸
 set $bgcolor 150429

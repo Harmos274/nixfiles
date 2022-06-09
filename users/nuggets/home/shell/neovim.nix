@@ -23,6 +23,7 @@
 
       # LSP
       easy-hls
+      hlint
       # easy-ps.purescript-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server

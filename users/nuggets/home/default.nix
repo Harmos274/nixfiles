@@ -74,6 +74,7 @@
     ripgrep
     rustup
     silver-searcher
+    stack
     vlc
     vscode
     wpgtk

@@ -163,6 +163,7 @@
     exfat
     firefox
     fish
+    fuse
     gcc
     git
     gnumake
