@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -14,14 +15,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Enable KVM / QEmu backend
-  boot.extraModprobeConfig = "options kvm_intel nested=1 vfio-pci ids=8086:5917";
-
-  boot.kernelParams = [ "intel_iommu=on" ];
-
-  # Enble VFIO for hardware acceleration on virtualized devices
-  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
 
   #networking.hostName = "nuggets"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -47,6 +40,19 @@
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -159,7 +165,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
-    unlaggy-discord-canary
     exfat
     firefox
     fish
@@ -172,12 +177,14 @@
     neovim
     ntfs3g
     obsidian
+    obs-studio
     python3
     spotify
     teams
     teamspeak_client
     thunderbird
     tree
+    unlaggy-discord-canary
     virt-manager
     vivaldi
     vivaldi-ffmpeg-codecs

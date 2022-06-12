@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', '--depth', '1', install_path})
+  fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', '--depth', '1', install_path })
   execute 'packadd packer.nvim'
 end
 
@@ -53,6 +53,7 @@ require('packer').startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
+    commit = 'bba6fb67fdafc0af7c5454058dfbabc2182741f4',
     requires = {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-vsnip',

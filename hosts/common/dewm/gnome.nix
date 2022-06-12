@@ -11,6 +11,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    #gnomeExtensions.pop-shell
     gnome.gnome-tweaks
   ];
 }
