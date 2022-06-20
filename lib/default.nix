@@ -31,6 +31,7 @@
       extraSpecialArgs = {
         inherit system hostname;
       };
+      pkgs = builtins.getAttr system inputs.nixpkgs.outputs.legacyPackages;
       homeDirectory = "/home/${username}";
       configuration = ../users/${username}/home;
       extraModules = [

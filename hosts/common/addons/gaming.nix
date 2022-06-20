@@ -22,7 +22,6 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
-    lutris
     steam-run
     desmume
   ];
