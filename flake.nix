@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = inputs:
@@ -37,5 +39,23 @@
           hostname = "nuggets";
         };
       };
-    };
+
+    } // inputs.flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          pkgs = import inputs.nixpkgs { inherit system overlays; };
+        in
+        {
+          # If you're not using NixOS and only want to load your home
+          # configuration when `nix` is installed on your system and
+          # flakes are enabled.
+          #
+          # Enable a `nix develop` shell with home-manager and git to
+          # only load your home configuration.
+          devShell = pkgs.mkShell {
+            buildInputs = with pkgs; [ home-manager git ];
+            NIX_CONFIG = "experimental-features = nix-command flakes";
+          };
+        }
+      );
 }
