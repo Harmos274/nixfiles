@@ -1,23 +1,24 @@
 # Nix OS / Home Manager
 
-- DE: Gnome 40
-- Terminal Emulator: Kitty
+- DE: Gnome 4X
+- Terminal Emulator: Kitty / Foot
 - Shell: Fish
-- Editor: Nvim (nightly)
+- Editor: Neovim (nightly)
 
 You may have noted that i barely use the power of nix configs. There is two major reasons behind that, firstly 
-i am very new in the nix/os world. Secondly, i also want to use my configurations outside of a nix environment 
-therefore i have to use a maximum amount of raw config files.
+i am very new in the nix/os world. Secondly, i also **need** to be able to use my configurations outside of a 
+nix environment therefore i have to use a maximum amount of raw config files.
 
-## Install
-Nix flake and home-manager are required.
+## Requirement
 
-### flake.nix
-You may need to `chown` `/etc/nixos/` before.
+This is a **NixOS** configuration and i haven't tested it outside. Nix flakes and home-manager are required.
+Since home-manager is OS agnostic, it may works outside of NixOS.
+
+## flake.nix
+After you cloned that repository anywere in your system, run the following commands to load the system and user
+configurations.
 
 ```sh
-$> cd nixfiles
-$> ln -sf $PWD/flake.nix /etc/nixos/flake.nix
 $> sudo nixos-rebuild switch --flake .
 $> home-manager switch --flake .
 ```
