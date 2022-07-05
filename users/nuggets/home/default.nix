@@ -48,6 +48,8 @@
     (nerdfonts.override { fonts = [ "MPlus" "FiraCode" "FiraMono" "IBMPlexMono" ]; })
     cozette
     jetbrains-mono
+    roboto
+    roboto-slab
     overpass
     ibm-plex
 

@@ -1,10 +1,14 @@
-{ config, pkgs, lib, ... }: {
+{ inputs, config, pkgs, lib, system, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
+{
   imports =
     [
       ../addons/cli-suite.nix
     ];
 
-  programs.sway = {
+  programs. sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     extraSessionCommands = ''
@@ -19,12 +23,13 @@
       kitty # terminal
       mako # notification daemon
       slurp # screensharing
-      swayidle
+      swayidle # autolockscreen
       swaylock # lockscreen
       waybar # status bar
-      wl-clipboard
+      wl-clipboard # clipboard
       wofi # alt dmenu
-      xdg-desktop-portal-wlr
+      unstable.eww-wayland # plugins and bar
+      xdg-desktop-portal-wlr # XDG
       xwayland # for legacy apps
     ];
   };

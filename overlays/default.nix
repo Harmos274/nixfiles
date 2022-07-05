@@ -6,6 +6,21 @@ final: prev:
       "--ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy";
   });
 
+  jetbrains = prev.jetbrains // {
+    webstorm = prev.jetbrains.webstorm.overrideDerivation
+      (_: rec {
+        name = "webstorm-${version}";
+        version = "222.3048.13";
+
+        src = prev.fetchurl
+          {
+            url = "https://download.jetbrains.com/webstorm/WebStorm-${version}.tar.gz";
+            sha256 = "d8eb23db330ed83aca220494f535dbaac9e8496b330bdb36760edae27dd2ff3c";
+          };
+      });
+  };
+
+
   # Add packages for purescript with nix
   # easy-ps = prev.callPackage import
   #   (prev.pkgs.fetchFromGitHub {
