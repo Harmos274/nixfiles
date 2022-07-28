@@ -56,6 +56,7 @@
     appimage-run
     azure-cli
     bat
+    calibre
     cawbird
     delta
     deluge

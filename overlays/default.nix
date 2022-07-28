@@ -10,12 +10,12 @@ final: prev:
     webstorm = prev.jetbrains.webstorm.overrideDerivation
       (_: rec {
         name = "webstorm-${version}";
-        version = "222.3048.13";
+        version = "222.3345.94";
 
         src = prev.fetchurl
           {
             url = "https://download.jetbrains.com/webstorm/WebStorm-${version}.tar.gz";
-            sha256 = "d8eb23db330ed83aca220494f535dbaac9e8496b330bdb36760edae27dd2ff3c";
+            sha256 = "sha256-cxGjXv926GPvdrjgldPxNGnGUQVSfZF0xS/wna6jHnk=";
           };
       });
   };

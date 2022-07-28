@@ -195,6 +195,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     # For old electron app (Discord, VSCode etc.)
     "electron-13.6.9"
+    "libdwarf-20181024"
   ];
 
   # Set Neovim as default editor
