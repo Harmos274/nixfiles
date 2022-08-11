@@ -85,8 +85,8 @@
 
     # JetBrains
     jetbrains.datagrip
-    jetbrains.webstorm
     jetbrains.idea-ultimate
+    jetbrains.webstorm
   ];
   home.stateVersion = "20.09";
 }
