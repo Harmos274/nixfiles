@@ -60,13 +60,10 @@
     cawbird
     delta
     deluge
-    #easy-ps.purs
-    #easy-ps.spago
     fzf
     inkscape
     jq
     lsd
-    #minecraft
     ncdu
     neofetch
     newsflash
