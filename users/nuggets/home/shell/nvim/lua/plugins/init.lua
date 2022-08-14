@@ -18,6 +18,9 @@ require('packer').startup(function(use)
   -- StatusLine
   use { 'hoob3rt/lualine.nvim', config = require('plugins.lualine') }
 
+  -- Zen Mode
+  use { 'Pocco81/true-zen.nvim', config = require('plugins.true-zen') }
+
   -- Nix file support
   use 'LnL7/vim-nix'
 

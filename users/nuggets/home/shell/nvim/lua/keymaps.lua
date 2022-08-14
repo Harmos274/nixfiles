@@ -13,9 +13,6 @@ utils.map('i', 'kJ', '<C-c>')
 utils.map('i', 'Kj', '<C-c>')
 utils.map('i', 'kj', '<C-c>')
 
--- Toggle numbers
-utils.map('n', '<leader><CR>', ':set number!<CR>')
-
 -- Wrapped lines goes down/up to next row, rather than next line in file.
 utils.map('n', 'j', 'gj')
 utils.map('n', 'J', 'gj')
