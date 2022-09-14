@@ -68,7 +68,6 @@
     neofetch
     newsflash
     nodejs_latest
-    postman
     pyright
     ripcord
     ripgrep

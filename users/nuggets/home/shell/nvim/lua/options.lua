@@ -16,7 +16,7 @@ set.number = true
 set.relativenumber = true
 
 -- Set cursor scroll distance
-set.scrolloff = 99
+set.scrolloff = 12
 
 -- Shorten key sequence timeout
 set.timeoutlen = 200
