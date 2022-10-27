@@ -100,11 +100,11 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Augmented buffer line
-  use {
-    'akinsho/nvim-bufferline.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = require('plugins.bufferline')
-  }
+  --use {
+  --  'akinsho/nvim-bufferline.lua',
+  --  requires = 'kyazdani42/nvim-web-devicons',
+  --  config = require('plugins.bufferline')
+  --}
 
   -- VScode like icons on LSP autocompletion
 

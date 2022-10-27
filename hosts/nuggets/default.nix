@@ -8,7 +8,7 @@
     ../common/dewm/sway.nix # Include this for a lighter DE
     # ../common/dewm/kdeplasma.nix # Include this for fucking plasma desktop
     ../common/dewm/gnome.nix # Include this for Gnome (the best of all)
-    ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
+    # ../common/addons/gaming.nix # Lutris, Steam etc... for G4MING
     ../common/addons/flatpak.nix # enable Flatpak and Flatpak builder
   ];
 
@@ -139,7 +139,6 @@
     python3
     spotify
     teams
-    teamspeak_client
     thunderbird
     tree
     unlaggy-discord-canary

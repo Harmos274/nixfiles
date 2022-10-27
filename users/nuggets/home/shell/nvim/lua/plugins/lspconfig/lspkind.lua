@@ -1,4 +1,4 @@
-return function ()
+return function()
   require('lspkind').init({
     -- defines how annotations are shown
     -- default: symbol

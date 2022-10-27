@@ -10,7 +10,7 @@
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    #neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -21,7 +21,6 @@
       overlays = with inputs;
         [
           local-overlays
-          neovim-nightly-overlay.overlay
         ];
       lib = import ./lib { inherit inputs overlays; };
     in

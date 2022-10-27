@@ -12,7 +12,6 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
     extraConfig = ''
       lua << EOF
       ${lib.strings.fileContents ./nvim/init.lua}
