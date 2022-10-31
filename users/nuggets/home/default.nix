@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable-pkgs, ... }:
 {
   imports = [
     ./python
@@ -67,7 +67,8 @@
     ncdu
     neofetch
     newsflash
-    nodejs_latest
+    #unstable-pkgs.nodejs
+    nodejs-16-16
     pyright
     ripcord
     ripgrep

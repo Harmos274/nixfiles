@@ -1,4 +1,4 @@
-return function ()
+return function()
   require('nvim-treesitter.configs').setup {
     highlight = {
       enable = true,
@@ -25,5 +25,7 @@ return function ()
 
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-  vim.wo.foldtext= [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... '.trim(getline(v:foldend))]]
+  vim.wo.foldtext = [[
+    substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').' ... '.trim(getline(v:foldend))
+  ]]
 end

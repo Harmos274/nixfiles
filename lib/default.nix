@@ -29,7 +29,8 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit username system;
       extraSpecialArgs = {
-        inherit system hostname;
+        inherit system hostname inputs;
+        unstable-pkgs = builtins.getAttr system inputs.nixpkgs-unstable.outputs.legacyPackages;
       };
       pkgs = builtins.getAttr system inputs.nixpkgs.outputs.legacyPackages;
       homeDirectory = "/home/${username}";
