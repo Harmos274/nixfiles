@@ -25,17 +25,15 @@
       ] ++ inputs.nixpkgs.lib.forEach users (u: ../users/${u}/system);
     };
 
-  mkHome = { username, system, hostname }:
+  mkHome = { username, system, hostname, stateVersion }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit username system;
       extraSpecialArgs = {
         inherit system hostname inputs;
         unstable-pkgs = builtins.getAttr system inputs.nixpkgs-unstable.outputs.legacyPackages;
       };
       pkgs = builtins.getAttr system inputs.nixpkgs.outputs.legacyPackages;
-      homeDirectory = "/home/${username}";
-      configuration = ../users/${username}/home;
-      extraModules = [
+      modules = [
+        ../users/${username}/home
         {
           nixpkgs = {
             inherit overlays;
@@ -47,6 +45,11 @@
           };
           # ???
           systemd.user.startServices = "sd-switch";
+
+          home = {
+            inherit username stateVersion;
+            homeDirectory = "/home/${username}";
+          };
         }
       ];
     };

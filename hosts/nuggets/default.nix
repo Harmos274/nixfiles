@@ -109,7 +109,7 @@
   };
 
   # Optimize Nix Store storage consumption
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
 
   # Run Nix garbage collector every week
   nix.gc = {

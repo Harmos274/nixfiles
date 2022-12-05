@@ -1,4 +1,4 @@
-return function ()
+return function()
   local lsp = require('lspconfig')
 
   local utils = require('utils')
@@ -6,18 +6,18 @@ return function ()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 
-  local on_attach = function (client, bufnr)
+  local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) utils.buf_map(bufnr, ...) end
 
-    buf_set_keymap('n', 'gd',        '<cmd>lua vim.lsp.buf.declaration()<CR>')
-    buf_set_keymap('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    buf_set_keymap('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>')
-    buf_set_keymap('n', '<C-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    buf_set_keymap('n', '1gD',       '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>')
-    buf_set_keymap('n', 'g0',        '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-    buf_set_keymap('n', 'gW',        '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-    buf_set_keymap('n', 'gk',        '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    buf_set_keymap('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    buf_set_keymap('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+    buf_set_keymap('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+    buf_set_keymap('n', 'gk', '<cmd>lua vim.lsp.buf.code_action()<CR>')
     buf_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
     buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
@@ -33,8 +33,8 @@ return function ()
     require('lsp_signature').on_attach({ hint_enable = false })
   end
 
-  local make_on_attach = function (server_on_attach)
-    return function (client, bufnr)
+  local make_on_attach = function(server_on_attach)
+    return function(client, bufnr)
       on_attach(client, bufnr)
 
       if server_on_attach then
@@ -52,19 +52,19 @@ return function ()
     { name = 'rnix' },
     { name = 'bashls' },
     { name = 'pyright' },
-    { name = 'purescriptls'},
+    { name = 'purescriptls' },
   }
 
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = {
-        prefix = '🐸'
-      },
-    }
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+      prefix = '🐸'
+    },
+  }
   )
 
   vim.lsp.handlers['textDocument/codeAction'] = require('lsputil.codeAction').code_action_handler

@@ -11,12 +11,8 @@ end
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- packer self management
 
-  -- Git info
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = require('plugins.gitsigns')
-    -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
-  }
+  -- Git
+  use { 'lewis6991/gitsigns.nvim', config = require('plugins.gitsigns') }
 
   -- Colorscheme
   -- use { 'marko-cerovac/material.nvim', config = require('plugins.material') }

@@ -67,8 +67,7 @@
     ncdu
     neofetch
     newsflash
-    #unstable-pkgs.nodejs
-    nodejs-16-16
+    unstable-pkgs.nodejs
     pyright
     ripcord
     ripgrep
@@ -85,6 +84,5 @@
     jetbrains.idea-ultimate
     jetbrains.webstorm
   ];
-  home.stateVersion = "20.09";
 }
 
