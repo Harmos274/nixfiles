@@ -69,20 +69,18 @@
     newsflash
     unstable-pkgs.nodejs
     pyright
-    ripcord
     ripgrep
     rustup
     silver-searcher
     stack
     vlc
-    vscode
     wpgtk
     yarn
 
     # JetBrains
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    jetbrains.webstorm
+    #jetbrains.datagrip
+    #jetbrains.idea-ultimate
+    #jetbrains.webstorm
   ];
 }
 
